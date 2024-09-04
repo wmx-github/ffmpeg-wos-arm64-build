@@ -17,5 +17,15 @@ from:
 - https://github.com/libsdl-org/SDL
 - https://code.videolan.org/videolan/x264
 
-See :
-- [Release/main](https://github.com/dvhh/ffmpeg-wos-arm64-build/releases/tag/main) to download latest build Artifacts
+### auto build ffmpeg:latest
+build-ffmpeg-main.yml 
+release at releases/tag/main
+
+### auto build ffmpeg:release/6.1
+build-ffmpeg-release6.1.yaml
+release at releases/tag/v6.1
+
+### use
+- 1 Manually trigger the workflow
+- 2 Trigger when push 
+- 3 All workflow is triggered every Monday at midnight (00:00)
