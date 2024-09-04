@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir output
           readlink -f output
-          cp ${{ github.workspace }}/local  output
+          cp -r ${{ github.workspace }}/local  output
           # tar cfz all.tar.gz ${{ github.workspace }}/local/bin
           cd output
           zip -r -D ../ffmpeg-wos-arm64.zip .
