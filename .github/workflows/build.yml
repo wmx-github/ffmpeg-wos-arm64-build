@@ -40,6 +40,7 @@ jobs:
         with:
           repository: FFmpeg/FFmpeg
           path: ffmpeg
+          ref: n6.1
       - name: build ffmpeg
         run: |
           # /opt/llvm-mingw/aarch64-w64-mingw32/
@@ -61,11 +62,11 @@ jobs:
         run: |
           mkdir output
           readlink -f output
-          cp ${{ github.workspace }}/local/bin/*.exe ${{ github.workspace }}/local/bin/*.dll output
+          cp ${{ github.workspace }}/local  output
           # tar cfz all.tar.gz ${{ github.workspace }}/local/bin
           cd output
           zip -r -D ../ffmpeg-wos-arm64.zip .
-      - uses: IsaacShelton/update-existing-release@v1.3.3
+      - uses: IsaacShelton/update-existing-release@v1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: ffmpeg-wos-arm64.zip
+          files: ffmpeg-n6.1-wos-arm64.zip
