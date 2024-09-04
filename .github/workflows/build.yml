@@ -40,7 +40,7 @@ jobs:
         with:
           repository: FFmpeg/FFmpeg
           path: ffmpeg
-          ref: release/6.1
+          #ref: release/6.1
       - name: build ffmpeg
         run: |
           # /opt/llvm-mingw/aarch64-w64-mingw32/
@@ -70,8 +70,29 @@ jobs:
         uses: IsaacShelton/update-existing-release@v1.3.4
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          release: "v6.1"
-          tag: "v6.1"
+          release: "main"
+          tag: "main"
+          message: "ffmpeg:latest for win on arm"
+          body: | 
+                " use container:image: mstorsjo/llvm-mingw:20230614
+                  runs-on: ubuntu-latest
+                  build-tool: llvm-mingw 
+                  cross compile
+                
+                ./configure \
+                 --pkg-config=/usr/bin/x86_64-pc-linux-gnu-pkg-config  \
+                 --pkgconfigdir=${{ github.workspace }}/local/lib/pkgconfig \
+                 --cross-prefix=aarch64-w64-mingw32- \
+                 --arch=arm64 \
+                 --target-os=mingw32 \
+                 --enable-sdl \
+                 --disable-doc \
+                 --prefix=${{ github.workspace }}/local \
+                 --disable-static \
+                 --enable-shared \
+                 --enable-libx264 \
+                 --enable-gpl \
+                 --enable-nonfree "
           replace: true
           files: >
             ffmpeg-wos-arm64.zip
