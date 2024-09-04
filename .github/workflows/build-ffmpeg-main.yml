@@ -76,7 +76,9 @@ jobs:
           tag: "main"
           message: "ffmpeg:latest for win on arm"
           body: | 
-                " use container:image: mstorsjo/llvm-mingw:20230614
+                "
+                ffmpeg:latest for win on arm 
+                use container:image: mstorsjo/llvm-mingw:20230614
                   runs-on: ubuntu-latest
                   build-tool: llvm-mingw 
                   cross compile
