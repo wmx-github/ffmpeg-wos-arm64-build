@@ -70,8 +70,8 @@ jobs:
         uses: IsaacShelton/update-existing-release@v1.3.4
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          release: "main"
-          tag: "main"
+          release: "v6.1"
+          tag: "v6.1"
           message: "ffmpeg:release/6.1 for win on arm"
           body: | 
                 "
