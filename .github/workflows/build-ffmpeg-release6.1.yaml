@@ -2,8 +2,6 @@ name: build-ffmpeg-release6.1
 
 on:
   push:
-    paths:
-    - 'build-ffmpeg-release6.1.yaml'  # 只有当 build-ffmpeg-release6.1.yaml 发生变化时触发
   workflow_dispatch:   # 允许手动触发工作流
   schedule:
     - cron: 0 0 * * 1   # 每周一的午夜（00:00）触发一次工作流
@@ -74,9 +72,11 @@ jobs:
           token: ${{secrets.GITHUB_TOKEN}}
           release: "main"
           tag: "main"
-          message: "ffmpeg:latest for win on arm"
+          message: "ffmpeg:release/6.1 for win on arm"
           body: | 
-                " use container:image: mstorsjo/llvm-mingw:20230614
+                "
+                ffmpeg:release/6.1 for win on arm
+                use container:image: mstorsjo/llvm-mingw:20230614
                   runs-on: ubuntu-latest
                   build-tool: llvm-mingw 
                   cross compile
